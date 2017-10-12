@@ -1,22 +1,29 @@
 class MyComponent extends HTMLElement {
     constructor () {
         super();
-        this.root = this.attachShadow({mode: 'open'});
-        var link = document.querySelector('link[rel="import"]');
-        var content = link.import;
-        // Grab DOM from component.html's document.
-        var template = content.querySelector('#template');
-        var clone = template.content.cloneNode(true);
-        this.root.appendChild(clone);
-    }
-
-    connectedCallback() {
-      // var link = document.querySelector('link[rel="import"]');
-      // var content = link.import;
-      // // Grab DOM from component.html's document.
-      // var template = content.querySelector('#template');
-      // var clone = template.content.cloneNode(true);
-      // this.root.appendChild(clone);
+        this.root = this;
+        this.root.innerHTML = `
+                <style>
+                    @keyframes roll {
+                      0% {transform: rotateY(0deg)}
+                      100% {transform: rotateY(360deg)}
+                    }
+                    .rotate {
+                      transform-style: preserve-3d;
+                      animation: roll 2s infinite linear;
+                    }
+                    #container {
+                      perspective: 1400px;
+                      padding: 10px;
+                    }
+                    my-component {
+                      text-align: center;
+                    }
+                </style>
+                <div id="container">
+                  <img class="rotate" src="logo.svg">
+                </div>
+            `;
     }
 
     static get observedAttributes() {
@@ -38,7 +45,7 @@ class MyComponent extends HTMLElement {
         case 'speed':
           this._speed = newValue;
 
-          var img = this.root.querySelector("img");
+          var img = this.querySelector("img");
           img.style.animationDuration = newValue;
 
           var range = document.querySelector("input[type='range']");
