@@ -1,13 +1,24 @@
+body {
+  margin: 0;
+}
+
 @keyframes roll {
   0% {transform: rotateY(0deg)}
   100% {transform: rotateY(360deg)}
 }
+
 .rotate {
   transform-style: preserve-3d;
   animation: roll 2s infinite linear;
 }
 
+#host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 #container {
   perspective: 1400px;
-  text-align: center;
 }
