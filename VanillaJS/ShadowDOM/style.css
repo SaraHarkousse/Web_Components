@@ -2,13 +2,30 @@
   0% {transform: rotateY(0deg)}
   100% {transform: rotateY(360deg)}
 }
+
+#host .rotate {
+  transform-style: preserve-3d;
+  animation: roll 2s infinite linear;
+}
+
 :host .rotate {
   transform-style: preserve-3d;
   animation: roll 2s infinite linear;
 }
 
-:host .container {
+#host .container{
   perspective: 1400px;
+}
+
+:host .container{
+  perspective: 1400px;
+}
+
+#host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 :host {

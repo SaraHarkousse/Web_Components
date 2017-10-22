@@ -1,5 +1,12 @@
-var host = document.querySelector('#host')
-var root = host.attachShadow({mode: 'open'});
+var shadowflag = HTMLElement.prototype.attachShadow;
+
+var host = document.querySelector('#host');
+var root = host;
+
+if (shadowflag) {
+  root = host.attachShadow({mode: 'open'});
+}
+
 root.innerHTML = `
   <link rel="stylesheet" href="style.css">
   <div id="container">
