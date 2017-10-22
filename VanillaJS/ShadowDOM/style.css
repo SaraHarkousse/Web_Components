@@ -12,7 +12,8 @@
 }
 
 :host {
-  text-align: center;
-  border: 1px solid tomato;
-  padding: 10px
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
