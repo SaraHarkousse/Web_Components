@@ -34,3 +34,9 @@
   align-items: center;
   height: 100vh;
 }
+
+:host(:hover) {
+  border-width: var(--border-width, 1em);
+  border-style: solid;
+  border-color: tomato;
+}
