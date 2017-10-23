@@ -16,14 +16,12 @@ class MyComponent extends HTMLElement {
                       perspective: 1400px;
                       padding: 10px;
                     }
-                    my-component {
-                      text-align: center;
-                    }
                 </style>
                 <div id="container">
                   <img class="rotate" src="logo.svg">
                 </div>
             `;
+        this._speed = 0;
     }
 
     static get observedAttributes() {
@@ -60,12 +58,12 @@ class MyComponent extends HTMLElement {
       }
     }
 
-    attachedCallback () {
-        alert("attached");
+    connectedCallback () {
+        //alert("connected");
     }
 
-    detachedCallback () {
-        alert("detached");
+    disconnectedCallback () {
+        //alert("disconnected");
     }
 }
 
@@ -79,6 +77,25 @@ customElements.whenDefined("my-component").then(() => {
 
     var input = document.querySelector("input[type='text']");
     input.value = val;
-  }, false);
-
+  });
 });
+
+// customElements.whenDefined("my-component").then(() => {
+//   var comp = document.querySelector("my-component");
+//   comp.addEventListener("speed", (data) => {
+//     comp.speed = data.detail.val;
+//   });
+// });
+//
+// var inputWithRange = document.querySelector("input[type='range']");
+// inputWithRange.addEventListener("change", (event) => {
+//   var event2 = new CustomEvent("speed", {
+//     "detail": {"val": event.target.value + 's'}
+//   });
+//   inputWithRange.dispatchEvent(event2);
+// });
+//
+// var inputWithText = document.querySelector("input[type='text']");
+// inputWithText.addEventListener("speed", (evt) => {
+//   inputWithText.value = evt.detail.val;
+// });

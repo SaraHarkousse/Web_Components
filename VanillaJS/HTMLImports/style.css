@@ -9,5 +9,11 @@
 
 #container {
   perspective: 1400px;
-  text-align: center;
+}
+
+#host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
